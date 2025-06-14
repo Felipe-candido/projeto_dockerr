@@ -1,0 +1,15 @@
+/backend/venv
+/backend/projeto/projeto/__pycache__
+/backend/projeto/cadastro/__pycache__
+*/__pycache__/
+*.py[cod]
+*$py.class
+.env
+google_auth.env
+/backend/projeto/credentials.json
+/backend/projeto/token.pickle
+/backend/projeto/tokens.env
+token.pickle
+*.pickle
+tokens.env
+/frontend/staycation-v2/.env.local
