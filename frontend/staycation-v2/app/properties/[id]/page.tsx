@@ -204,40 +204,6 @@ export default function PropertyDetails() {
               <MapPin className="w-4 h-4 mr-1" />
               <span>{imovel?.endereco?.cidade}, {imovel?.endereco?.estado}</span>
             </div>
-            <button className="ml-auto text-primary hover:underline flex items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-5 h-5 mr-1"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 0m-3.935 0l-9.566-5.314m9.566-4.314a2.25 2.25 0 10-3.935 0m3.935 0l-9.566 5.314"
-                />
-              </svg>
-              Share
-            </button>
-            <button className="text-primary hover:underline flex items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-5 h-5 mr-1"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
-                />
-              </svg>
-              Save
-            </button>
           </div>
         </section>
 
@@ -431,7 +397,6 @@ export default function PropertyDetails() {
                 ))}
               </div>
 
-              <button className="border border-gray-800 rounded-lg px-6 py-2 font-medium">Show all 128 reviews</button>
             </section>
           </div>
 
@@ -442,11 +407,6 @@ export default function PropertyDetails() {
                 <div>
                   <span className="text-2xl font-bold">R$ {imovel?.preco}</span>
                   <span className="text-gray-600"> Dia</span>
-                </div>
-                <div className="flex items-center">
-                  <Star className="w-4 h-4 text-primary fill-current" />
-                  <span className="ml-1 font-medium">4.92</span>
-                  <span className="mx-1 text-gray-400">·</span>
                 </div>
               </div>
 

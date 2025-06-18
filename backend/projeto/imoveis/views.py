@@ -4,7 +4,7 @@ from dateutil.parser import parse
 from reservas.services import GoogleCalendarService
 from .models import Imovel, Comodidade, imagem_imovel
 from rest_framework.response import Response
-from .serializers import imovel_serializer, ComodidadeSerializer, imovel_destaque_serializer
+from .serializers import imovel_serializer, ComodidadeSerializer, imovel_destaque_serializer, AvaliacaoImovelSerializer
 from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from django.contrib.auth import get_user_model
@@ -387,6 +387,36 @@ class ImoveisDestaqueView(viewsets.ReadOnlyModelViewSet):
             'imagens',
             'comentarios'
         )
+
+
+
+
+class AvaliacaoImovelView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        imovel_id = request.query_params.get('imovel_id')
+        if not imovel_id:
+            return Response(
+                {'erro': 'ID do imóvel é obrigatório'}, 
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        try:
+            imovel = Imovel.objects.get(id=imovel_id)
+            serializer = AvaliacaoImovelSerializer(imovel)
+            return Response(serializer.data)
+        except Imovel.DoesNotExist:
+            return Response(
+                {'erro': 'Imóvel não encontrado'}, 
+                status=status.HTTP_404_NOT_FOUND
+            )
+        except Exception as e:
+            logger.error(f"Erro ao buscar avaliações do imóvel: {str(e)}", exc_info=True)
+            return Response(
+                {'erro': f'Erro ao buscar avaliações: {str(e)}'}, 
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
 
 
 

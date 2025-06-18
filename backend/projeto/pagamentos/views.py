@@ -38,9 +38,9 @@ def criar_preferencia(request):
                 }
             ],
             "back_urls": {
-                "success": "https://dcad-177-128-8-150.ngrok-free.app/payment/{reserva_id}/confirmacao",
-                "failure": f"https://dcad-177-128-8-150.ngrok-free.app/payment/{reserva_id}",
-                "pending": f"https://dcad-177-128-8-150.ngrok-free.app/payment/{reserva_id}"
+                "success": "https://e17b-177-128-8-55.ngrok-free.app/payment/{reserva_id}/confirmacao",
+                "failure": f"https://e17b-177-128-8-55.ngrok-free.app/payment/{reserva_id}",
+                "pending": f"https://e17b-177-128-8-55.ngrok-free.app/payment/{reserva_id}"
             },
             "auto_return": "approved",
             "external_reference": str(reserva_id)

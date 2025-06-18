@@ -1,6 +1,7 @@
 from .models import Imovel, Endereco_imovel, Comodidade, imagem_imovel
 from rest_framework import serializers
 import logging
+from django.db.models import Avg
 
 logger = logging.getLogger(__name__)
 
@@ -124,3 +125,19 @@ class imovel_destaque_serializer(serializers.ModelSerializer):
                 'legenda': imagem.legenda
             }
         return None
+
+
+class AvaliacaoImovelSerializer(serializers.ModelSerializer):
+    media_avaliacoes = serializers.SerializerMethodField()
+    total_avaliacoes = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Imovel
+        fields = ['id', 'media_avaliacoes', 'total_avaliacoes']
+
+    def get_media_avaliacoes(self, obj):
+        media = obj.comentarios.aggregate(media=Avg('avaliacao'))['media']
+        return round(media or 0, 1)
+
+    def get_total_avaliacoes(self, obj):
+        return obj.comentarios.count()

@@ -17,6 +17,11 @@ interface Imovel {
   logo?: string
 }
 
+interface AvaliacaoData {
+  media_avaliacoes: number;
+  total_avaliacoes: number;
+}
+
 export default function SearchPage() {
 
   const [imoveis, setImoveis] = useState<Imovel[]>([])
@@ -26,6 +31,7 @@ export default function SearchPage() {
   const [cidade, setCidade] = useState('')
   const [valorMaximo, setValorMaximo] = useState('')
   const [avaliacaoMaxima, setAvaliacaoMaxima] = useState('')
+  const [avaliacoes, setAvaliacoes] = useState<Record<number, AvaliacaoData>>({});
 
 
   // REQUISICAO PARA O BACKEND PARA PEGAR OS IMOVEIS
@@ -78,6 +84,29 @@ export default function SearchPage() {
       buscarImoveis(cidadeDetectada)
     }
   }, [cidadeDetectada])
+
+  useEffect(() => {
+    const fetchAvaliacoes = async () => {
+      const novasAvaliacoes: Record<number, AvaliacaoData> = {};
+      
+      for (const imovel of imoveis) {
+        try {
+          const response = await fetch(`http://localhost:8000/api/imoveis/avaliacao/?imovel_id=${imovel.id}`);
+          if (!response.ok) throw new Error('Erro ao buscar avaliações');
+          const data = await response.json();
+          novasAvaliacoes[imovel.id] = data;
+        } catch (error) {
+          console.error(`Erro ao buscar avaliações do imóvel ${imovel.id}:`, error);
+        }
+      }
+      
+      setAvaliacoes(novasAvaliacoes);
+    };
+
+    if (imoveis.length > 0) {
+      fetchAvaliacoes();
+    }
+  }, [imoveis]);
 
  
 
@@ -247,11 +276,16 @@ export default function SearchPage() {
                     <div className="flex justify-between items-start mb-2">
                       <div>
                         <h3 className="font-semibold text-lg">{imovel.titulo}</h3>
-                        <p className="text-gray-600 text-sm">São Paulo, Brasil</p>
+                        <p className="text-gray-600 text-sm">{imovel.endereco.cidade}, {imovel.endereco.estado}</p>
                       </div>
                       <div className="flex items-center">
                         <Star className="w-4 h-4 text-primary fill-current" />
-                        <span className="text-sm font-medium ml-1">4.9</span>
+                        <span className="text-sm font-medium ml-1">
+                          {avaliacoes[imovel.id]?.media_avaliacoes || 0}
+                        </span>
+                        <span className="text-xs text-gray-500 ml-1">
+                          ({avaliacoes[imovel.id]?.total_avaliacoes || 0})
+                        </span>
                       </div>
                     </div>
                     <p className="text-gray-600 text-sm mb-3 flex-grow">
@@ -266,7 +300,6 @@ export default function SearchPage() {
                       <p className="font-semibold">
                         {imovel.preco} <span className="text-gray-600 font-normal text-sm">noite</span>
                       </p>
-                      <span className="text-xs text-gray-600">15-20 de Maio • R$600 total</span>
                     </div>
                   </div>
                 </div>

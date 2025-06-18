@@ -30,6 +30,7 @@ export default function Properties() {
         setLoading(false)
       }
     }
+
     fetchImoveis()
   }, [])
 
@@ -103,40 +104,6 @@ export default function Properties() {
               </div>
             ))
           )}
-        </div>
-
-        {/* Pagination */}
-        <div className="flex justify-center mb-8">
-          <div className="flex items-center space-x-2">
-            <button className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-                className="w-4 h-4"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-              </svg>
-            </button>
-            <button className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center">1</button>
-            <button className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50">
-              2
-            </button>
-            <button className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-                className="w-4 h-4"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-              </svg>
-            </button>
-          </div>
         </div>
       </div>
     </MainLayout>
