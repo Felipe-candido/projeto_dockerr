@@ -19,6 +19,7 @@ interface Imovel {
   id: number
   titulo: string
   descricao: string
+  logo: string
   preco: number
   endereco: {
     cidade: string
@@ -136,7 +137,7 @@ export default function Home() {
                   <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
                     <div className="relative h-64">
                       <img
-                        src={imovel.imagens[0]?.imagem || "/placeholder.svg"}
+                        src={imovel.logo || "/placeholder.svg"}
                         alt={imovel.titulo}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
