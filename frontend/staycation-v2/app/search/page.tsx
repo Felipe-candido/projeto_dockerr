@@ -204,21 +204,12 @@ export default function SearchPage() {
           </div>
         )}
 
-        {/* Filter Pills */}
-        <section className="mb-6 flex flex-wrap gap-2">
-          <button className="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full text-sm font-medium">Piscina</button>
-          <button className="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full text-sm font-medium">
-            Churrasqueira
-          </button>
-          <button className="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full text-sm font-medium">Wi-Fi</button>
-        </section>
-
         {/* Results Count */}
         <section className="mb-6">
           <h1 className="text-2xl font-bold">
-            <span className="text-primary">248</span> propriedades encontradas
+            <span className="text-primary"></span> Propriedades encontradas
           </h1>
-          <p className="text-gray-600">{cidade} • 15-20 de Maio • 2 hóspedes</p>
+          <p className="text-gray-600">{cidade}</p>
         </section>
 
         
@@ -281,47 +272,6 @@ export default function SearchPage() {
                 </div>
               </Link>
             ))}
-          </div>
-          <div className="mt-8 flex justify-center">
-            <div className="flex items-center space-x-2">
-              <button className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  className="w-4 h-4"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                </svg>
-              </button>
-              <button className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center">
-                1
-              </button>
-              <button className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50">
-                2
-              </button>
-              <button className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50">
-                3
-              </button>
-              <span className="mx-2">...</span>
-              <button className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50">
-                12
-              </button>
-              <button className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  className="w-4 h-4"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                </svg>
-              </button>
-            </div>
           </div>
         </section>
       </div>

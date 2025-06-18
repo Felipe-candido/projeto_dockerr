@@ -182,9 +182,6 @@ export default function RegisterForm({ onLoginClick, onRegistrationSuccess }: Re
                           {...field}
                         />
                       </FormControl>
-                      <p className="mt-1 text-xs text-gray-500">
-                        A senha precisa ter pelo menos 8 digitos
-                      </p>
                       <FormMessage className="text-xs text-red-500" />
                     </FormItem>
                   )}
